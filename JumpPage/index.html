@@ -41,10 +41,10 @@
 				}
 				if(md5(type)==GetUrlValue("Locode")){
 					if(getCookie(type)==""){
-						var TpUrlCode=prompt(type);
-						var Times=prompt("许可时间（单位：天，可以有小数）:");
+						var TpUrlCode=prompt("请输入"+type+"的许可密钥");
+						var Times=prompt("请输入许可时间（单位：天，可以有小数）:");
 						setCookie(type,TpUrlCode,parseFloat(Times));
-						alert("新建许可成功，许可时间:"+Times+"天");
+						alert("本设备许可成功，许可时间:"+Times+"天");
 					}else{
 						var TpUrlCode=getCookie(type);
 					}
