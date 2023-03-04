@@ -25,9 +25,20 @@
 			  }
 			  return "";
 			}
+			function clearAllCookie() {
+				var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+				if(keys) {
+					for(var i = keys.length; i--;)
+					document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+				}
+			}
+
 			//Main
 			function OnLoad(){
-				var type=prompt(GetUrlValue("Check"));
+				var type=prompt(GetUrlValue("Check")+"(输入‘CleanPermission’清除所有许可)");
+				if(type=="CleanPermission"){
+					clearAllCookie();
+				}
 				if(md5(type)==GetUrlValue("Locode")){
 					if(getCookie(type)==""){
 						var TpUrlCode=prompt(type);
