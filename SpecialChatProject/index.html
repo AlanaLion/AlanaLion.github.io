@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SpecialChat3.0</title>
+	</head>
+	<body style="background-color: black;color:white">
+		<script>
+			function autoheight(ida,hun){
+				var winHeight=0;
+				if (window.innerHeight)
+					winHeight = window.innerHeight;
+				else if ((document.body) && (document.body.clientHeight))
+					winHeight = document.body.clientHeight;
+				if (document.documentElement && document.documentElement.clientHeight)
+					winHeight = document.documentElement.clientHeight/100*hun;
+				document.getElementById(ida).style.height= winHeight+"px";
+			}
+		</script>
+		<iframe src="./main.html" style="width: 100%" id="main" frameborder="0" scrolling="no"></iframe>
+		<script>
+			autoheight("main",100);
+		</script>
+	</body>
+</html>

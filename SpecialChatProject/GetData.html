@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SpecialChat3.0</title>
+	</head>
+	<body style="background-color: white">
+		<script>
+			function GS(urla,name) {
+			  const url_string = urla; // window.location.href
+			  const url = new URL(url_string);
+			  return url.searchParams.get(name);
+			}
+			function autoheight(ida,hun){
+				var winHeight=0;
+				if (window.innerHeight)
+					winHeight = window.innerHeight;
+				else if ((document.body) && (document.body.clientHeight))
+					winHeight = document.body.clientHeight;
+				if (document.documentElement && document.documentElement.clientHeight)
+					winHeight = document.documentElement.clientHeight/100*hun;
+				document.getElementById(ida).style.height= winHeight+"px";
+			}
+			function setCookie(cname,cvalue,exdays)
+			{
+			  var d = new Date();
+			  d.setTime(d.getTime()+(exdays*24*60*60*1000));
+			  var expires = "expires="+d.toGMTString();
+			  document.cookie = cname + "=" + cvalue + "; " + expires;
+			}
+			function getCookie(cname)
+			{
+			  var name = cname + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i=0; i<ca.length; i++) 
+			  {
+				var c = ca[i].trim();
+				if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+			  }
+			  return "";
+			}
+			function OnLoad(){
+				//最后上服务器的时候要改第39行的url
+				var data=GS(window.location.href,"Datas");
+				var arraya=data.split("@");
+				for(var i = 0, len = arraya.length; i < len; i++) {
+					if(arraya[i]!=""){
+						var bv=getCookie(arraya[i].split("=")[0]);
+						var nn=arraya[i].split("=")[0];
+						var nv=arraya[i].split("=")[1];
+						if(bv!=""){
+							setCookie(nn,bv+"&"+nv,999999);
+						}else{
+							setCookie(nn,nv,999999);
+						}
+					}
+				}
+				var url=window.btoa("http://hellophp2023.freeee.ml/test.html?ID="+GS(window.location.href,"ID"));
+				setTimeout('window.location.href="http://hellophp2023.freeee.ml/GetData.php?ID='+GS(window.location.href,"ID")+'&URL='+url+'"', 1000)
+			}
+			window.onload=OnLoad;
+		</script>
+	</body>
+</html>
