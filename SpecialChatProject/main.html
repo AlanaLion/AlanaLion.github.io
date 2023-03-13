@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SpecialChat3.0</title>
+	</head>
+	<body style="background-color: black;color:white">
+		<script>
+			function GS(urla,name) {
+			  const url_string = urla; // window.location.href
+			  const url = new URL(url_string);
+			  return url.searchParams.get(name);
+			}
+			function autoheight(ida,hun){
+				var winHeight=0;
+				if (window.innerHeight)
+					winHeight = window.innerHeight;
+				else if ((document.body) && (document.body.clientHeight))
+					winHeight = document.body.clientHeight;
+				if (document.documentElement && document.documentElement.clientHeight)
+					winHeight = document.documentElement.clientHeight/100*hun;
+				document.getElementById(ida).style.height= winHeight+"px";
+			}
+			function TurnChat(ChatToID){
+				document.getElementById("chatbox").src="./ChatBox.html?ChatID="+ChatToID+"&ID="+GS(window.location.href,"ID");
+			}
+			function OnLoad(){
+				document.getElementById("chatbox").src="";
+				document.getElementById("friendlist").src="./FriendBox.html?ID="+GS(window.location.href,"ID")+"&Datas=";
+				document.getElementById("Upload").src="./GetData.html?Datas=&ID="+GS(window.location.href,"ID");
+			}
+			window.onload=OnLoad;
+		</script>
+		<h1 style="text-align: center">Alana.SpecialChat Welcome</h1>
+		<iframe id="Upload" style="width: 0px;height: 0px" frameborder="0" src="./GetData.html"></iframe>
+		<div style="position: relative">
+			<iframe id="friendlist" src=" " style="width: 30%;position: absolute;" frameborder="0"></iframe>
+			<iframe id="chatbox" src=" " style="width: 70%;position: absolute;left: 30%" frameborder="0"></iframe>
+			<script>
+				autoheight("friendlist",90);
+				autoheight("chatbox",90);
+			</script>
+		</div>
+	</body>
+</html>
