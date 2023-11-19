@@ -698,7 +698,7 @@ if (reversed == null) { reversed = false; }
 		this.START_Button.addEventListener("click", fl_ClickToGoToWebPage);
 		
 		function fl_ClickToGoToWebPage() {
-			that.gotoAndStop(6);
+			that.gotoAndStop(1);
 		}
 	}
 	this.frame_1 = function() {
